@@ -23,7 +23,7 @@
     <tr th:each="blog:${ls}">
         <td th:text="${blog.title}"></td>
         <td th:text="${blog.cotent}"></td>
-        <td th:text="${blog.createTime}></td>
+        <td th:text="${blog.createTime}"></td>
         <td>
             <a th:href="@{/blog}">编辑</a>
             <a th:href="@{/blog}">删除</a>
