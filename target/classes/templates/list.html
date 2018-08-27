@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/webjars/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+    <SCRIPT src="/webjars/jquery/3.3.1/dist/jquery.min.js"></SCRIPT>
+    <SCRIPT src="/webjars/bootstrap/3.2.0/js/bootstrap.min.js"></SCRIPT>
+</head>
+<body>
+<table class="table table-bordered">
+    <caption>thymeleaf-CRUD-demo</caption>
+    <thead>
+    <tr>
+        <th th:text="编号"></th>
+        <th th:text="标题"></th>
+        <th th:text="内容"></th>
+        <th th:text="时间"></th>
+        <th th:text="编辑"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="blog:${ls}">
+        <td th:text="${blog.title}"></td>
+        <td th:text="${blog.cotent}"></td>
+        <td th:text="${blog.createTime}></td>
+        <td>
+            <a th:href="@{/blog}">编辑</a>
+            <a th:href="@{/blog}">删除</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
