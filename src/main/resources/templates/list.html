@@ -20,16 +20,36 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="blog:${ls}">
+    <tr th:if=" ${ls.size()} ge '0'" th:each="blog,blogStat : ${ls}">
+        <td th:text="${blogStat.count}"></td>
         <td th:text="${blog.title}"></td>
-        <td th:text="${blog.cotent}"></td>
+        <td th:text="${blog.content}"></td>
         <td th:text="${blog.createTime}"></td>
         <td>
-            <a th:href="@{/blog}">编辑</a>
+            <a onclick="deleteBlog(1);">编辑</a>
             <a th:href="@{/blog}">删除</a>
         </td>
     </tr>
+    <tr th:if=" ${ls.size()} lt '0'">
+        <td th:text="${ls}"></td>
+    </tr>
     </tbody>
 </table>
+<script>
+    function deleteBlog(id) {
+        var r=confirm("确认删除？");
+        if(r){
+            $.ajax({
+                url:"@{/blog/}"+id,
+                type:"DELETE",
+                data:id,//将json对象转换成json字符串发送
+                dataType:"json",
+                success:function(result){
+                    alert(result);
+                },
+            });
+        }
+    }
+</script>
 </body>
 </html>
