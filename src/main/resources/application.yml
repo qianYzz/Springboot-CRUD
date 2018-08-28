@@ -4,7 +4,9 @@ spring:
     username: root
     password: hoteam
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/test
+    url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;characterEncoding=UTF-8
+         jdbc:mysql://localhost:3306/houseBase?useUnicode=true&amp&characterEncoding=utf-8
+
     type: com.alibaba.druid.pool.DruidDataSource
 #   数据源其他配置
     initialSize: 5

@@ -35,7 +35,7 @@ public class BlogDaoImpl implements BlogDao {
 
     @Override
     public int addBlog(Blog blog) {
-        return  jdbcTemplate.update(" INSERT INTO blog(id,name,number,teachername)VALUES (?,?,?,?)",
+        return  jdbcTemplate.update(" INSERT INTO blog(id,title,content,createTime)VALUES (?,?,?,?)",
                 blog.getId(),blog.getTitle(),blog.getContent(),blog.getCreateTime());
     }
 
@@ -46,8 +46,8 @@ public class BlogDaoImpl implements BlogDao {
 
     @Override
     public int updataBlog(Blog blog) {
-        return jdbcTemplate.update("UPDATE blog SET id=?,title=?,content=?,createTime=?",
-                blog.getId(),blog.getTitle(),blog.getContent(),blog.getCreateTime());
+        return jdbcTemplate.update("UPDATE blog SET title=?,content=?,createTime=? where id=?",
+                blog.getTitle(),blog.getContent(),blog.getCreateTime(),blog.getId());
     }
 
 }

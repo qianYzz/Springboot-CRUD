@@ -20,32 +20,34 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:if=" ${ls.size()} ge '0'" th:each="blog,blogStat : ${ls}">
+    <tr th:if=" ${ls.size()} gt '0'" th:each="blog,blogStat : ${ls}">
         <td th:text="${blogStat.count}"></td>
         <td th:text="${blog.title}"></td>
         <td th:text="${blog.content}"></td>
         <td th:text="${blog.createTime}"></td>
         <td>
-            <a onclick="deleteBlog(1);">编辑</a>
-            <a th:href="@{/blog}">删除</a>
+            <a href="javascript:void(0);" th:onclick="|deleteBlog('${blog.id}')|">删除</a>
+            <a th:href="@{/edit/}+${blog.id}">编辑</a>
         </td>
     </tr>
-    <tr th:if=" ${ls.size()} lt '0'">
+    <tr th:if=" ${ls.size()} le '0'">
         <td th:text="${ls}"></td>
     </tr>
     </tbody>
 </table>
+<a type="button" class="btn btn-default" th:href="@{/add}" style="width: 80%;margin-left: 10%;">新增</a>
 <script>
     function deleteBlog(id) {
         var r=confirm("确认删除？");
         if(r){
             $.ajax({
-                url:"@{/blog/}"+id,
+                url:"http://localhost:8080/blog/"+id,
                 type:"DELETE",
                 data:id,//将json对象转换成json字符串发送
                 dataType:"json",
                 success:function(result){
-                    alert(result);
+                    alert(result.msg);
+                    window.location.reload();
                 },
             });
         }
