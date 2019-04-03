@@ -14,7 +14,7 @@ public class LoginComtroller {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         if ("admin".equals(username)&&"123456".equals(password)){
-            return "redirect:/assets";
+            return "/platform/index";
         }else{
             return "forward:/";
         }

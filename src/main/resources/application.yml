@@ -2,10 +2,9 @@ spring:
   datasource:
 #   数据源基本配置
     username: root
-    password: hoteam
+    password: 123456
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;characterEncoding=UTF-8
-         jdbc:mysql://localhost:3306/houseBase?useUnicode=true&amp&characterEncoding=utf-8
+    url: jdbc:mysql://127.0.0.1:3306/jfinal_demo?useUnicode=true&amp;characterEncoding=UTF-8
 
     type: com.alibaba.druid.pool.DruidDataSource
 #   数据源其他配置
